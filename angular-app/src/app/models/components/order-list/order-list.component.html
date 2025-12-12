@@ -1,0 +1,19 @@
+<h3>Liste des commandes</h3>
+<div *ngIf="loading">Chargement...</div>
+
+<table class="table" *ngIf="!loading">
+  <thead>
+    <tr><th>ID</th><th>Client</th><th>Total</th><th>Date</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of orders">
+      <td>{{o.id}}</td>
+      <td>{{o.customerName}}</td>
+      <td>{{o.totalAmount || 0 | number:'1.2-2'}} TND</td>
+      <td>{{o.createdAt || '-'}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(o.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

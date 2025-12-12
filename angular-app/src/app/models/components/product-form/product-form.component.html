@@ -1,0 +1,29 @@
+<h3>Ajouter / Modifier Produit</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label class="form-label">Nom</label>
+    <input class="form-control" formControlName="name">
+    <div *ngIf="form.controls['name'].touched && form.controls['name'].invalid" class="text-danger small">
+      Nom requis (min 2 caractères).
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Prix</label>
+    <input class="form-control" type="number" formControlName="price">
+    <div *ngIf="form.controls['price'].touched && form.controls['price'].invalid" class="text-danger small">
+      Prix invalide.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Quantité</label>
+    <input class="form-control" type="number" formControlName="quantity">
+    <div *ngIf="form.controls['quantity'].touched && form.controls['quantity'].invalid" class="text-danger small">
+      Quantité invalide.
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="submitting">Enregistrer</button>
+</form>
